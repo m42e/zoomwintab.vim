@@ -17,6 +17,10 @@ set cpo&vim
 if !exists("g:zoomwintab_remap")
     let g:zoomwintab_remap = 1
 endif
+
+if !exists("g:zoomwintab_hidetabline")
+    let g:zoomwintab_hidetabline = 1
+endif
 " }}}
 
 
@@ -41,7 +45,9 @@ function! ZoomWinTabIn()
         if tabpage != tabpagenr()
             let t:zoomwintab = &stal
             let t:zoomwintabnr = tabpage
-            set showtabline=0
+            if g:zoomwintab_hidetabline == 1
+                set showtabline=0
+            endif
         endif
     else
         echo 'No buffer'
